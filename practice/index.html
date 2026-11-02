@@ -479,7 +479,9 @@
       .principles, .docs, .who { grid-template-columns: 1fr 1fr; }
       .hours-card { left: 0.8rem; }
       .service { grid-template-columns: 3rem 1fr; }
-      .service p { grid-column: 2; }
+      .service .idx { grid-column: 1; grid-row: 1 / span 2; }
+      .service h3,
+      .service p:not(.idx) { grid-column: 2; }
     }
     @media (max-width: 760px) {
       .nav-toggle { display: inline-flex; }

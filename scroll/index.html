@@ -736,16 +736,20 @@
       .js .reel-track { flex-direction: column; width: auto; transform: none !important; }
       .js .reel-card { flex-basis: auto; width: 100%; height: 72vw; min-height: 280px; }
       .floaters { height: auto; display: grid; gap: 0.75rem; }
-      .floaters figure {
+      .floaters figure,
+      .floaters figure:nth-child(1),
+      .floaters figure:nth-child(2),
+      .floaters figure:nth-child(3) {
         position: relative;
-        width: auto;
-        height: 240px;
+        width: 100%;
+        height: 220px;
         inset: auto;
         top: auto;
         right: auto;
         bottom: auto;
         left: auto;
       }
+      .floaters img { transform: none !important; }
       .facts { grid-template-columns: 1fr; }
       .hero h1 { font-size: clamp(3rem, 14vw, 4.4rem); }
     }
@@ -1272,6 +1276,10 @@
             var center = box.top + box.height / 2 - window.innerHeight / 2;
             var speed = parseFloat(el.dataset.speed);
             el.style.transform = "translate3d(0, " + (-center * speed * 0.18).toFixed(1) + "px, 0)";
+          });
+        } else {
+          document.querySelectorAll("[data-speed]").forEach(function (el) {
+            el.style.transform = "";
           });
         }
       }
