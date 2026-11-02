@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A.R. Peralta Dentists — Practice concept</title>
+  <meta name="description" content="A professional clinic-site concept for A.R. Peralta Dentists, focused on pediatric dentistry. Placeholder name and details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,450&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%230f5c56' width='32' height='32'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='%23fbfbf9' font-size='11' font-family='Georgia'%3EAR%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #17211e;
+      --muted: #3e4c47;
+      --bg: #f3f4f1;
+      --paper: #fbfbf9;
+      --line: #d5dbd6;
+      --teal: #0f5c56;
+      --teal-deep: #0c3330;
+      --gold: #9c7a48;
+      --font-d: "Newsreader", "Iowan Old Style", Palatino, serif;
+      --font-s: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-s);
+      font-size: 1rem;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    [hidden] { display: none !important; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+    button, input, select, textarea { font: inherit; }
+    :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    ::selection { background: #d5ebe7; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .skip {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      background: var(--paper);
+      padding: 0.5rem 0.8rem;
+      z-index: 80;
+    }
+    .skip:focus { top: 0.6rem; }
+
+    .sticky-head {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(251, 251, 249, 0.94);
+      backdrop-filter: blur(14px);
+    }
+    .utility {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0.45rem clamp(1.25rem, 3vw, 2rem);
+      background: var(--teal-deep);
+      color: #e7f2ef;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+    .utility a { color: inherit; text-underline-offset: 0.18em; }
+    .site-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.85rem clamp(1.25rem, 3vw, 2rem);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .mark {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      font-family: var(--font-d);
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
+    }
+    .brand strong {
+      display: block;
+      font-family: var(--font-d);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .brand small {
+      display: block;
+      margin-top: 0.22rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.64rem;
+    }
+    .site-nav {
+      display: flex;
+      gap: 1.35rem;
+      margin-left: auto;
+    }
+    .site-nav a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .site-nav a:hover,
+    .site-nav a.is-on { color: var(--ink); }
+    .btn, .btn-line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 0.72rem 1rem;
+      border-radius: 2px;
+      border: 1px solid var(--teal);
+      line-height: 1.2;
+    }
+    .btn { background: var(--teal); color: #f4fbf9; }
+    .btn:hover { background: var(--teal-deep); }
+    .btn-line { background: transparent; color: var(--teal-deep); }
+    .nav-toggle {
+      display: none;
+      margin-left: auto;
+      background: transparent;
+      border: 1px solid var(--line);
+      padding: 0.45rem 0.7rem;
+      color: var(--ink);
+    }
+
+    .shell { width: min(1120px, calc(100% - 2.5rem)); margin-inline: auto; }
+    .section { padding: 5.25rem 0; }
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.8rem;
+    }
+    h1, h2, .pull {
+      font-family: var(--font-d);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+    h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); max-width: 16ch; }
+
+    .hero { padding: 3.5rem 0 4rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: end;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.7rem);
+      max-width: 11ch;
+    }
+    .lede {
+      margin-top: 1.25rem;
+      max-width: 38rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.75rem; }
+    .hero-figure { position: relative; margin: 0; }
+    .hero-figure img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 40%;
+      background: #d5dbd6;
+    }
+    .hours-card {
+      position: absolute;
+      left: -1.5rem;
+      bottom: 1.25rem;
+      width: min(250px, 70%);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--gold);
+      padding: 1rem 1.05rem 1.1rem;
+      box-shadow: 0 16px 40px rgba(23, 33, 30, 0.08);
+    }
+    .hours-card p { font-size: 0.92rem; color: var(--muted); }
+    .hours-card strong {
+      display: block;
+      font-family: var(--font-d);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .principles article {
+      padding: 1.35rem 1.2rem 1.5rem;
+      border-left: 1px solid var(--line);
+    }
+    .principles article:first-child { border-left: 0; }
+    .principles h2 {
+      font-family: var(--font-s);
+      font-size: 0.98rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.4;
+      max-width: none;
+      margin-bottom: 0.4rem;
+    }
+    .principles p { color: var(--muted); font-size: 0.92rem; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+    }
+    .section-head p { max-width: 28rem; color: var(--muted); }
+
+    .service {
+      display: grid;
+      grid-template-columns: 4.5rem 0.8fr 1.3fr;
+      gap: 1rem 1.5rem;
+      padding: 1.35rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .services .service:last-child { border-bottom: 1px solid var(--line); }
+    .service .idx {
+      font-family: var(--font-d);
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+    .service h3 { font-size: 1.05rem; font-weight: 500; padding-top: 0.15rem; }
+    .service p { color: var(--muted); }
+
+    .pull-wrap { padding: 1rem 0 2rem; }
+    .pull {
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      font-style: italic;
+      font-weight: 450;
+      max-width: 18em;
+      line-height: 1.2;
+    }
+    .pull span {
+      display: block;
+      margin-top: 1rem;
+      font-family: var(--font-s);
+      font-style: normal;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .band {
+      background: var(--teal-deep);
+      color: #eef6f4;
+    }
+    .band .eyebrow { color: #d7b98a; }
+    .band-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 4vw, 4rem);
+      align-items: center;
+    }
+    .steps { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+    .steps li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(238, 246, 244, 0.16);
+    }
+    .steps strong { display: block; font-weight: 500; margin-bottom: 0.2rem; }
+    .steps p { color: rgba(238, 246, 244, 0.8); }
+    .steps span {
+      font-family: var(--font-d);
+      font-style: italic;
+      color: #d7b98a;
+    }
+    .band figure { margin: 0; }
+    .band img { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; }
+
+    .who {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .who article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.25rem 1.2rem 1.4rem;
+    }
+    .who h3 {
+      font-family: var(--font-d);
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .who p { color: var(--muted); }
+
+    .docs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .doc img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 18%;
+      background: #d5dbd6;
+      transition: transform 0.8s ease;
+    }
+    .doc:hover img { transform: scale(1.03); }
+    .doc div { padding: 1.15rem 1.15rem 1.35rem; }
+    .doc .role {
+      color: var(--teal);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .doc h3 {
+      font-family: var(--font-d);
+      font-size: 1.7rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0.35rem 0 0.65rem;
+      line-height: 1.1;
+    }
+    .doc p { color: var(--muted); font-size: 0.95rem; }
+    .doc .focus {
+      margin-top: 0.9rem;
+      color: var(--ink);
+      font-size: 0.88rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+    }
+    details { border-top: 1px solid var(--line); padding: 0.95rem 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--line); }
+    summary {
+      cursor: pointer;
+      font-weight: 500;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--teal); font-family: var(--font-d); font-size: 1.4rem; line-height: 1; }
+    details[open] summary::after { content: "–"; }
+    details p { color: var(--muted); padding: 0.7rem 2rem 0.3rem 0; }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.4rem 1.35rem 1.5rem;
+    }
+    .panel + .panel { margin-top: 1rem; }
+    .panel h3 {
+      font-family: var(--font-d);
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 0.55rem;
+    }
+    .panel p, .panel li { color: var(--muted); }
+    .panel ul { margin: 0; padding-left: 1.1rem; }
+    .panel a { color: var(--teal-deep); }
+
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; }
+    label { display: grid; gap: 0.35rem; }
+    label span {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    label.wide { grid-column: 1 / -1; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      padding: 0.75rem 0.8rem;
+      border-radius: 2px;
+    }
+    textarea { min-height: 7rem; resize: vertical; }
+    input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: #8c3a32; }
+    form .btn { border: 0; cursor: pointer; width: fit-content; }
+    .form-note { grid-column: 1 / -1; color: var(--muted); font-size: 0.88rem; }
+    .form-success {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--teal);
+      padding: 1.5rem;
+    }
+    .form-success h3 {
+      font-family: var(--font-d);
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .form-success p { color: var(--muted); margin-bottom: 1rem; }
+    .form-success button {
+      background: transparent;
+      border: 1px solid var(--line);
+      padding: 0.55rem 0.8rem;
+      cursor: pointer;
+    }
+
+    .site-footer {
+      padding: 1.5rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+    }
+    .site-footer nav { display: flex; gap: 1rem; }
+    .site-footer a { color: var(--ink); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .band-grid, .split, .visit-grid { grid-template-columns: 1fr; }
+      .principles, .docs, .who { grid-template-columns: 1fr 1fr; }
+      .hours-card { left: 0.8rem; }
+      .service { grid-template-columns: 3rem 1fr; }
+      .service p { grid-column: 2; }
+    }
+    @media (max-width: 760px) {
+      .nav-toggle { display: inline-flex; }
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0.9rem 1.25rem 1.15rem;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+      }
+      .site-nav.is-open { display: flex; }
+      .site-header .btn { display: none; }
+      .principles, .docs, .who, form { grid-template-columns: 1fr; }
+      .principles article { border-left: 0; border-top: 1px solid var(--line); }
+      .principles article:first-child { border-top: 0; }
+      .section-head { flex-direction: column; align-items: start; }
+      label.wide { grid-column: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .doc img { transition: none; }
+      .doc:hover img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <div class="sticky-head">
+    <div class="utility">
+      <p>Pediatric dentistry · English and Filipino · Same-day calls for pain and injury</p>
+      <p><a href="tel:+63281234567">+63 2 8123 4567</a></p>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="#top">
+        <span class="mark" aria-hidden="true">AR</span>
+        <span>
+          <strong>A.R. Peralta</strong>
+          <small>Dentists</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#dentists">Dentists</a>
+        <a href="#first-visit">First visit</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="btn" href="#request-form">Request a visit</a>
+    </header>
+  </div>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Children’s dental practice</p>
+          <h1>Pediatric dental care for infants, children, and teens.</h1>
+          <p class="lede">A.R. Peralta Dentists looks after growing mouths. First visits, prevention, and treatment are planned around the time a child can actually give.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#request-form">Request a visit</a>
+            <a class="btn-line" href="tel:+63281234567">Call the clinic</a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=80" alt="Bright dental treatment room with a prepared chair" width="1400" height="1750">
+          <div class="hours-card">
+            <strong>Clinic hours</strong>
+            <p>Mon–Fri, 9:00–5:00<br>Saturday, 9:00–1:00<br>Sunday, closed</p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-label="How the practice works">
+      <div class="shell principles">
+        <article>
+          <h2>First look by age one</h2>
+          <p>Or within six months of the first tooth, if that comes sooner.</p>
+        </article>
+        <article>
+          <h2>A parent stays</h2>
+          <p>A guardian is in the room for the examination and any treatment.</p>
+        </article>
+        <article>
+          <h2>The visit can stop</h2>
+          <p>If a child has had enough, we end the appointment and return another day.</p>
+        </article>
+        <article>
+          <h2>Fees before treatment</h2>
+          <p>You hear the plan and the fee before restorative care begins.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Services</p>
+            <h2>Care for primary teeth, and the adult teeth arriving behind them.</h2>
+          </div>
+          <p>The practice is built around pediatric dentistry. Adult family members are referred to a colleague when they need their own dentist.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <p class="idx">01</p>
+            <h3>Infant and first visits</h3>
+            <p>A lap or chair exam, a count of teeth, and coaching for brushing at home. The goal of the first visit is a calm look, not a long procedure.</p>
+          </article>
+          <article class="service">
+            <p class="idx">02</p>
+            <h3>Examinations and cleanings</h3>
+            <p>Routine visits check growth, gums, and early decay. Cleaning and fluoride varnish are paced so a child can finish them.</p>
+          </article>
+          <article class="service">
+            <p class="idx">03</p>
+            <h3>Sealants</h3>
+            <p>A protective coat for the grooves of permanent molars, placed once those teeth have erupted far enough to keep dry.</p>
+          </article>
+          <article class="service">
+            <p class="idx">04</p>
+            <h3>Fillings for baby teeth</h3>
+            <p>Tooth-colored restorations when decay is limited. Baby teeth that still have years of work to do are worth repairing.</p>
+          </article>
+          <article class="service">
+            <p class="idx">05</p>
+            <h3>Pulp treatment</h3>
+            <p>When decay is deep but the tooth should stay until it loosens on its own. Dr. Reyes plans this care and explains the steps first.</p>
+          </article>
+          <article class="service">
+            <p class="idx">06</p>
+            <h3>Space maintainers</h3>
+            <p>If a baby tooth is lost early, a small appliance holds room for the permanent tooth so the neighbors do not drift.</p>
+          </article>
+          <article class="service">
+            <p class="idx">07</p>
+            <h3>Dental injuries</h3>
+            <p>Chips, loosened teeth, and knocks. Call the same day. A baby tooth that has come all the way out is not put back in. We still need to see the child.</p>
+          </article>
+          <article class="service">
+            <p class="idx">08</p>
+            <h3>Habits and growth</h3>
+            <p>Thumb and pacifier habits, crowding, and the early bite. We watch, and we refer to an orthodontist when the timing is right.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pull-wrap" aria-label="Practice principle">
+      <div class="shell">
+        <p class="pull">We would rather end a visit early than ask a child to endure past their limit.<span>How this practice works</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="who">
+      <div class="shell">
+        <p class="eyebrow">Patients</p>
+        <h2>Who we see</h2>
+        <div class="who">
+          <article>
+            <h3>Infants</h3>
+            <p>From the first tooth. A parent holds the child. We look, and we send you home with a way to clean the mouth tonight.</p>
+          </article>
+          <article>
+            <h3>Children</h3>
+            <p>Checkups, sealants, and treatment for decay or a toothache. Visits stay as short as the tooth allows.</p>
+          </article>
+          <article>
+            <h3>Teens</h3>
+            <p>Prevention through the arrival of permanent teeth, plus an early look at the bite. Some teens need a longer visit. We plan for that.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band section" id="first-visit">
+      <div class="shell band-grid">
+        <div>
+          <p class="eyebrow">New patients</p>
+          <h2>What the first visit actually is.</h2>
+          <ol class="steps">
+            <li>
+              <span>01</span>
+              <div>
+                <strong>You write or call</strong>
+                <p>Tell us the child’s age, any pain, and whether they have been to a dentist before.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>We ask a few things</strong>
+                <p>Medicines, medical conditions, and the words your child uses for teeth. If the day arrives and it is a bad morning, move it.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>We look first</strong>
+                <p>A parent stays. Cleaning or treatment happens only if the child can manage it in that sitting.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <strong>You leave with a plan</strong>
+                <p>A return in six months, help with brushing, or a second visit to finish care. Nothing restorative starts without a fee and a yes.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?auto=format&fit=crop&w=1400&q=80" alt="Mother sitting with a baby on a sofa" width="1400" height="1120">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="dentists">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Dentists</p>
+            <h2>The pediatric dentists at this clinic.</h2>
+          </div>
+          <p>One dentist follows your child. You are told who that is when the visit is scheduled.</p>
+        </div>
+        <div class="docs">
+          <article class="doc">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80" alt="Stand-in portrait representing Dr. Andrea R. Peralta">
+            <div>
+              <p class="role">Principal · Pediatric dentist</p>
+              <h3>Dr. Andrea R. Peralta</h3>
+              <p>Leads the practice and takes most first visits, including children who have never sat in a dental chair.</p>
+              <p class="focus">First visits · Anxious children · Infant exams</p>
+            </div>
+          </article>
+          <article class="doc">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80" alt="Stand-in portrait representing Dr. Mateo A. Reyes">
+            <div>
+              <p class="role">Pediatric dentist</p>
+              <h3>Dr. Mateo A. Reyes</h3>
+              <p>Plans fillings, pulp care, and space maintainers. Treatment is divided into steps a child can finish.</p>
+              <p class="focus">Fillings · Pulp care · Space maintainers</p>
+            </div>
+          </article>
+          <article class="doc">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=900&q=80" alt="Stand-in portrait representing Dr. Sofia L. Delgado">
+            <div>
+              <p class="role">Pediatric dentist</p>
+              <h3>Dr. Sofia L. Delgado</h3>
+              <p>Runs prevention visits and sees children who need a quieter room or a slower pace.</p>
+              <p class="focus">Checkups · Sealants · Extra time</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="parents" style="padding-top: 0">
+      <div class="shell split">
+        <div>
+          <p class="eyebrow">For parents</p>
+          <h2>Before the appointment.</h2>
+          <p class="lede">Say that the dentist will count teeth. Leave out promises that nothing will be felt, and leave out stories of your own bad visits.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>When should the first visit be?</summary>
+            <p>By the first birthday, or within six months of the first tooth, whichever comes first. An older child who has never been should still come.</p>
+          </details>
+          <details>
+            <summary>Do I stay in the room?</summary>
+            <p>Yes. A parent or guardian stays for the exam and for treatment.</p>
+          </details>
+          <details>
+            <summary>What if my child will not open?</summary>
+            <p>Then that is the visit. We stop. Forcing a first appointment makes the next one harder, so we schedule a shorter return.</p>
+          </details>
+          <details>
+            <summary>What if a tooth is knocked or chipped?</summary>
+            <p>Call the same day. Keep a knocked-out permanent tooth moist, in milk if you have it, and bring it with you. A baby tooth is not placed back into the socket. The child should still be seen.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit" style="padding-top: 0">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Visit</p>
+            <h2>The clinic, and a request.</h2>
+          </div>
+        </div>
+        <div class="visit-grid">
+          <div>
+            <article class="panel">
+              <h3>A.R. Peralta Dentists</h3>
+              <p>Level 2, Sample Building<br>Makati City</p>
+              <p style="margin-top: 0.8rem"><a href="tel:+63281234567">+63 2 8123 4567</a><br><a href="mailto:hello@arperalta.example">hello@arperalta.example</a></p>
+            </article>
+            <article class="panel">
+              <h3>Hours</h3>
+              <ul>
+                <li>Monday to Friday, 9:00 AM – 5:00 PM</li>
+                <li>Saturday, 9:00 AM – 1:00 PM</li>
+                <li>Sunday, closed</li>
+              </ul>
+              <p style="margin-top: 0.8rem">Languages spoken: English and Filipino.</p>
+            </article>
+          </div>
+          <div id="request-form">
+            <form id="request" novalidate>
+              <label>
+                <span>Parent or guardian</span>
+                <input name="parent" autocomplete="name" required>
+              </label>
+              <label>
+                <span>Phone</span>
+                <input name="phone" type="tel" autocomplete="tel" required>
+              </label>
+              <label>
+                <span>Child’s name</span>
+                <input name="child" required>
+              </label>
+              <label>
+                <span>Child’s age</span>
+                <input name="age" type="number" min="0" max="18" inputmode="numeric" required>
+              </label>
+              <label class="wide">
+                <span>Reason</span>
+                <select name="reason" required>
+                  <option value="">Select one</option>
+                  <option>First dental visit</option>
+                  <option>Checkup and cleaning</option>
+                  <option>Toothache or swelling</option>
+                  <option>Chipped or knocked tooth</option>
+                  <option>Another concern</option>
+                </select>
+              </label>
+              <label class="wide">
+                <span>Preferred days</span>
+                <input name="days" placeholder="Weekday mornings">
+              </label>
+              <label class="wide">
+                <span>Anything we should know</span>
+                <textarea name="note" placeholder="Medicines, medical conditions, or how the last visit went."></textarea>
+              </label>
+              <p class="form-note">Concept form. Nothing is sent or stored.</p>
+              <button class="btn" type="submit">Request a visit</button>
+            </form>
+            <div class="form-success" hidden>
+              <h3>Request held on this page.</h3>
+              <p>Nothing was sent. On a live site, this is where the clinic would receive the note and call you back.</p>
+              <button type="button" id="edit-request">Edit the request</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell site-footer">
+      <p>Concept website. The clinic name, dentists, portraits, address, and contact details are placeholders. Portraits are stand-in photographs. This page is general information about a practice, not a diagnosis.</p>
+      <nav aria-label="Concepts">
+        <a href="../index.html">Both concepts</a>
+        <a href="../scroll/">Scroll concept</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector(".nav-toggle");
+      var menu = document.querySelector(".site-nav");
+      function closeMenu() {
+        toggle.setAttribute("aria-expanded", "false");
+        menu.classList.remove("is-open");
+      }
+      toggle.addEventListener("click", function () {
+        var open = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!open));
+        menu.classList.toggle("is-open", !open);
+      });
+      menu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      var links = menu.querySelectorAll("a");
+      var ids = ["services", "dentists", "first-visit", "visit"];
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            links.forEach(function (link) {
+              link.classList.toggle("is-on", link.getAttribute("href") === "#" + entry.target.id);
+            });
+          });
+        }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
+        ids.forEach(function (id) {
+          var section = document.getElementById(id);
+          if (section) observer.observe(section);
+        });
+      }
+
+      var form = document.getElementById("request");
+      var success = document.querySelector(".form-success");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        form.hidden = true;
+        success.hidden = false;
+      });
+      document.getElementById("edit-request").addEventListener("click", function () {
+        success.hidden = true;
+        form.hidden = false;
+      });
+    })();
+  </script>
+</body>
+</html>
